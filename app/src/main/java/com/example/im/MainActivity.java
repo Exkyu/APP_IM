@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnShowMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                conectM();
+            }
+        });
+
         btnOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void conectL(){
         Intent intent = new Intent(this,Login.class);
+        startActivity(intent);
+    }
+    public void conectM(){
+        Intent intent = new Intent(this,Map.class);
         startActivity(intent);
     }
 }
