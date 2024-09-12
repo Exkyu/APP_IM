@@ -13,11 +13,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:gravity="center"
-        app:srcCompat="@drawable/Logo" />
+        android:src="@drawable/imglogo"
+        android:gravity="center" />
 
     <Button
-        android:id="@+id/idIniciarS"
+        android:id="@+id/idLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
@@ -26,12 +26,21 @@
         android:text="Iniciar sesion" />
 
     <Button
-        android:id="@+id/idVerM"
+        android:id="@+id/idShowMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
         android:gravity="center"
         android:padding="18dp"
         android:text="Ver Mapa" />
+
+    <Button
+        android:id="@+id/idOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:gravity="center"
+        android:padding="18dp"
+        android:text="Salir" />
 
 </LinearLayout>
