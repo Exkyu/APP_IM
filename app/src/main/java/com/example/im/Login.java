@@ -16,6 +16,8 @@ public class Login extends AppCompatActivity {
 
     private Button btnIniciar;
     private EditText txtNombre;
+    private Button btnBack;
+    private Button btnCrear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         btnIniciar = (Button) findViewById(R.id.idLoginL);
         txtNombre = (EditText) findViewById(R.id.idNombre);
+        btnBack = (Button) findViewById(R.id.idBack);
+        btnCrear = (Button) findViewById(R.id.idCrear);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,12 +34,34 @@ public class Login extends AppCompatActivity {
                 conectM();
             }
         });
+
+        btnCrear.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+                crearUser();
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //volver a la anterior
+                finish();
+            }
+        });
+
     }
 
     public void conectM(){
         Intent intent = new Intent(this,Map.class);
         String nombreparametro=txtNombre.getText().toString();
         intent.putExtra("nombre",nombreparametro);
+        startActivity(intent);
+    }
+
+    public void crearUser(){
+        Intent intent = new Intent(this, Registrar.class);
         startActivity(intent);
     }
 }

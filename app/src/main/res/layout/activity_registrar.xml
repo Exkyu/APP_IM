@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".Registrar">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="308dp"
+        android:layout_height="126dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/imglogo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:text="Crear Usuarios"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/idNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Ingrese Nombre"
+        android:padding="10dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/idContacto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Ingrese Contacto"
+        android:padding="10dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/idCorreo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Ingrese Correo"
+        android:padding="10dp"
+        android:minHeight="48dp"/>
+
+    <EditText
+        android:id="@+id/idContra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Ingrese Contraseña"
+        android:padding="10dp"
+        android:minHeight="48dp"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione Preferencias:"
+        android:layout_marginBottom="8dp" />
+
+    <CheckBox
+        android:id="@+id/checkboxPreferencia1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comida China" />
+
+    <CheckBox
+        android:id="@+id/checkboxPreferencia2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comida Rápida" />
+
+    <CheckBox
+        android:id="@+id/checkboxPreferencia3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comida Mexicana" />
+
+    <Button
+        android:id="@+id/idCrear"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:text="Crear" />
+</LinearLayout>

@@ -9,7 +9,7 @@
     tools:context=".Map">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imageView6"
         android:layout_width="184dp"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/imglogo" />

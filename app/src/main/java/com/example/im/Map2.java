@@ -12,18 +12,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Map extends AppCompatActivity {
+public class Map2 extends AppCompatActivity {
 
     private TextView lbNombre;
     private Button btnBack;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
-        lbNombre = (TextView) findViewById(R.id.idNombreLb);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_map2);
+
         btnBack =(Button) findViewById(R.id.idBack);
+        lbNombre = (TextView) findViewById(R.id.idNombreLb);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,9 +34,7 @@ public class Map extends AppCompatActivity {
             }
         });
 
-        Intent intent=getIntent();
-        String nombre=intent.getExtras().getString("nombre");
-        lbNombre.setText("Bienvenido " + nombre);
-    }
+        lbNombre.setText("Bienvenido ");
 
+    }
 }

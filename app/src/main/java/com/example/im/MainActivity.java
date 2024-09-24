@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void conectM(){
-        Intent intent = new Intent(this,Map.class);
+        Intent intent = new Intent(this, Map2.class);
         startActivity(intent);
     }
 }
