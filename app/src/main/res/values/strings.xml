@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">IM</string>
+    <string-array name="preferencias_array">
+        <item>Comida China</item>
+        <item>Comida Rápida</item>
+        <item>Comida Mexicana</item>
+        <item>Comida Peruana</item>
+        <item>Comida Chilena</item>
+    </string-array>
 </resources>

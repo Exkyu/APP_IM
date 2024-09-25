@@ -2,10 +2,11 @@ package com.example.im;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -43,6 +44,11 @@ public class Registrar extends AppCompatActivity {
                 finish();
             }
         });
+
+        Spinner spinnerPreferencias = findViewById(R.id.idSpinnerP);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.preferencias_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPreferencias.setAdapter(adapter);
 
     }
 }
