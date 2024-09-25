@@ -6,41 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/imglogo"
-        android:gravity="center" />
+        android:contentDescription="Logo"
+        android:scaleType="centerInside"
+        android:layout_gravity="center" />
 
     <Button
         android:id="@+id/idLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:gravity="center"
-        android:padding="18dp"
-        android:text="Iniciar sesion" />
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:text="Iniciar sesión"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
 
     <Button
         android:id="@+id/idShowMap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:gravity="center"
-        android:padding="18dp"
-        android:text="Ver Mapa" />
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Ver Mapa"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
 
     <Button
         android:id="@+id/idOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
-        android:gravity="center"
-        android:padding="18dp"
-        android:text="Salir" />
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Salir"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
 
 </LinearLayout>
