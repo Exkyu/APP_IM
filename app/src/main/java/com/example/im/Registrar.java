@@ -15,22 +15,14 @@ import androidx.core.view.WindowInsetsCompat;
 public class Registrar extends AppCompatActivity {
 
     private Button btnCrear;
-    private EditText txtNombre;
-    private EditText txtContacto;
-    private EditText txtCorreo;
-    private  EditText txtContra;
-
+    private Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_registrar);
-
-        txtNombre = (EditText) findViewById(R.id.idNombre);
-        txtContacto = (EditText) findViewById(R.id.idContacto);
-        txtContra = (EditText) findViewById(R.id.idContra);
-        txtCorreo = (EditText) findViewById(R.id.idCorreo);
+        btnBack = (Button) findViewById(R.id.idBack);
         btnCrear = (Button) findViewById(R.id.idCrear);
 
 
@@ -43,5 +35,14 @@ public class Registrar extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //volver a la anterior
+                finish();
+            }
+        });
+
     }
 }

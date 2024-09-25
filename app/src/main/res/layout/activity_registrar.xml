@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="#FFFFFF"
     tools:context=".Registrar">
 
     <ImageView
@@ -14,8 +15,9 @@
         android:layout_height="126dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/imglogo" />
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/imglogo"
+        android:contentDescription="Logo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -24,73 +26,104 @@
         android:layout_marginBottom="20dp"
         android:text="Crear Usuarios"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="#333333" />
 
     <EditText
         android:id="@+id/idNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="#625C5C"
         android:hint="Ingrese Nombre"
-        android:padding="10dp"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp"
+        android:padding="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#7C7B7B" />
 
     <EditText
         android:id="@+id/idContacto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="#625C5C"
         android:hint="Ingrese Contacto"
-        android:padding="10dp"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp"
+        android:padding="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#7C7B7B" />
 
     <EditText
         android:id="@+id/idCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="#625C5C"
         android:hint="Ingrese Correo"
-        android:padding="10dp"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp"
+        android:padding="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#7C7B7B" />
 
     <EditText
         android:id="@+id/idContra"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:backgroundTint="#625C5C"
         android:hint="Ingrese Contraseña"
-        android:padding="10dp"
+        android:inputType="textPassword"
         android:minHeight="48dp"
-        android:inputType="textPassword" />
+        android:padding="16dp"
+        android:textColor="#333333"
+        android:textColorHint="#7C7B7B" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seleccione Preferencias:"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="8dp"
+        android:textColor="#333333" />
 
     <CheckBox
         android:id="@+id/checkboxPreferencia1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comida China" />
+        android:text="Comida China"
+        android:textColor="#333333" />
 
     <CheckBox
         android:id="@+id/checkboxPreferencia2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comida Rápida" />
+        android:text="Comida Rápida"
+        android:textColor="#333333" />
 
     <CheckBox
         android:id="@+id/checkboxPreferencia3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comida Mexicana" />
+        android:text="Comida Mexicana"
+        android:textColor="#333333" />
 
     <Button
         android:id="@+id/idCrear"
         android:layout_width="match_parent"
         android:layout_height="59dp"
-        android:layout_marginTop="10dp"
-        android:text="Crear" />
+        android:layout_marginTop="20dp"
+        android:padding="16dp"
+        android:text="Crear"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
+
+    <Button
+        android:id="@+id/idBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="16dp"
+        android:text="Volver"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
+
 </LinearLayout>
