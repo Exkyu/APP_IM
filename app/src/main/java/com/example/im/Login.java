@@ -37,9 +37,9 @@ public class Login extends AppCompatActivity {
 
                 BD_IM db = new BD_IM(Login.this);
                 if(db.checkUserCredentials(nombre, contra)) {
-                    Intent intent = new Intent(Login.this, Map.class); // Reemplaza con la actividad destino
+                    Intent intent = new Intent(Login.this, Map.class);
                     startActivity(intent);
-                    finish();
+                    conectM();
                 } else {
                     Toast.makeText(Login.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
