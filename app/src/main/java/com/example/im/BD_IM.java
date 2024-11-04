@@ -7,8 +7,6 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import java.util.ArrayList;
-
 
 public class BD_IM extends SQLiteOpenHelper {
     // Nombre de la bd y la tabla
@@ -79,21 +77,6 @@ public class BD_IM extends SQLiteOpenHelper {
         db.close();
 
         return exists;
-    }
-        public ArrayList<String> obUsuarios() {
-        ArrayList<String> users = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + nombre_Tabla, null);
-
-        if (cursor.moveToFirst()) {
-            do {
-                String user = "ID: " + cursor.getInt(0) + ", Nombre: " + cursor.getString(1) + ", Contacto: " + cursor.getString(2) + ", Correo: " + cursor.getString(3);
-                users.add(user);
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        db.close();
-        return users;
     }
 }
 
