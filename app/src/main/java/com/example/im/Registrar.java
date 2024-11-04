@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -30,10 +31,20 @@ public class Registrar extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String nombre = ((EditText) findViewById(R.id.idNombre)).getText().toString();
+                String contacto = ((EditText) findViewById(R.id.idContacto)).getText().toString();
+                String correo = ((EditText) findViewById(R.id.idCorreo)).getText().toString();
+                String contra = ((EditText) findViewById(R.id.idContra)).getText().toString();
+                String preferencia = ((Spinner) findViewById(R.id.idSpinnerP)).getSelectedItem().toString();
+                String genero = ((CheckBox) findViewById(R.id.checkboxHombre)).isChecked() ? "Hombre" : "Mujer";
 
-                Toast.makeText(Registrar.this, "Usuario creado", Toast.LENGTH_SHORT).show();
-                //volver a la anterior
-                finish();
+                BD_IM db = new BD_IM(Registrar.this);
+                if(db.registerUser(nombre, contacto, correo, contra, preferencia, genero)) {
+                    Toast.makeText(Registrar.this, "Usuario creado", Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(Registrar.this, "Error al crear usuario", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

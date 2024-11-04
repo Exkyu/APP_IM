@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,17 @@ public class Login extends AppCompatActivity {
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                conectM();
+                String nombre = ((EditText) findViewById(R.id.idNombre)).getText().toString();
+                String contra = ((EditText) findViewById(R.id.idContra)).getText().toString();
+
+                BD_IM db = new BD_IM(Login.this);
+                if(db.checkUserCredentials(nombre, contra)) {
+                    Intent intent = new Intent(Login.this, Map.class); // Reemplaza con la actividad destino
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(Login.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
