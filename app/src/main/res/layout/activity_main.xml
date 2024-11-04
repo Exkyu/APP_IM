@@ -50,4 +50,14 @@
         android:textColor="#FFFFFF"
         android:backgroundTint="@color/ColorBtns" />
 
+    <Button
+        android:id="@+id/idVerUsuarios"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:text="Ver Usuarios"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="@color/ColorBtns" />
+
 </LinearLayout>

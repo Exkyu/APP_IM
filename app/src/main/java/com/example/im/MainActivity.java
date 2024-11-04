@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnShowMap;
     private Button btnOut;
+    private Button btnVerUsuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.idLogin);
         btnShowMap = (Button) findViewById(R.id.idShowMap);
         btnOut = (Button) findViewById(R.id.idOut);
+        btnVerUsuarios = (Button) findViewById(R.id.idVerUsuarios);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnVerUsuarios.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, VerUsuariosActivity.class);
+            startActivity(intent);
+        });
+
     }
 
     public void conectL(){
@@ -56,4 +64,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Map2.class);
         startActivity(intent);
     }
+
 }
