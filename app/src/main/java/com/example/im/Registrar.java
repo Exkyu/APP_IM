@@ -31,15 +31,22 @@ public class Registrar extends AppCompatActivity {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = ((EditText) findViewById(R.id.idNombre)).getText().toString();
-                String contacto = ((EditText) findViewById(R.id.idContacto)).getText().toString();
-                String correo = ((EditText) findViewById(R.id.idCorreo)).getText().toString();
-                String contra = ((EditText) findViewById(R.id.idContra)).getText().toString();
+                String nombre = ((EditText) findViewById(R.id.idNombre)).getText().toString().trim();
+                String contacto = ((EditText) findViewById(R.id.idContacto)).getText().toString().trim();
+                String correo = ((EditText) findViewById(R.id.idCorreo)).getText().toString().trim();
+                String contra = ((EditText) findViewById(R.id.idContra)).getText().toString().trim();
                 String preferencia = ((Spinner) findViewById(R.id.idSpinnerP)).getSelectedItem().toString();
                 String genero = ((CheckBox) findViewById(R.id.checkboxHombre)).isChecked() ? "Hombre" : "Mujer";
 
+                if (nombre.isEmpty() || contacto.isEmpty() || correo.isEmpty() || contra.isEmpty()) {
+                    Toast.makeText(Registrar.this, "Rellenar campos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 BD_IM db = new BD_IM(Registrar.this);
-                if(db.registerUser(nombre, contacto, correo, contra, preferencia, genero)) {
+                if (db.usuariosExistente(correo)) {
+                    Toast.makeText(Registrar.this, "Usuario ya existe", Toast.LENGTH_SHORT).show();
+                } else if (db.registerUser(nombre, contacto, correo, contra, preferencia, genero)) {
                     Toast.makeText(Registrar.this, "Usuario creado", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {

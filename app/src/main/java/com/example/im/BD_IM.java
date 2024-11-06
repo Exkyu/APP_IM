@@ -15,7 +15,7 @@ public class BD_IM extends SQLiteOpenHelper {
     private static final String nombre_BD = "UsuariosBD";
     private static final String nombre_Tabla = "Usuarios";
 
-    // Version de la base de datos
+    // Version de la bd
     private static final int version_BD = 1;
 
     // Columnas de la tabla
@@ -53,47 +53,155 @@ public class BD_IM extends SQLiteOpenHelper {
     }
     // Método para registrar un usuario
     public boolean registerUser(String nombre, String contacto, String correo, String contra, String preferencias, String genero) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(nombre_COLUMNA, nombre);
-        values.put(contacto_COLUMNA, contacto);
-        values.put(correo_COLUMNA, correo);
-        values.put(contra_COLUMNA, contra);
-        values.put(preferencias_COLUMNA, preferencias);
-        values.put(genero_COLUMNA, genero);
+        SQLiteDatabase db = null;
+        long result = -1;
 
-        long result = db.insert(nombre_Tabla, null, values);
-        db.close();
+        try {
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(nombre_COLUMNA, nombre);
+            values.put(contacto_COLUMNA, contacto);
+            values.put(correo_COLUMNA, correo);
+            values.put(contra_COLUMNA, contra);
+            values.put(preferencias_COLUMNA, preferencias);
+            values.put(genero_COLUMNA, genero);
 
-        return result != -1; // Retorna verdadero si se inserta correctamente
+            result = db.insert(nombre_Tabla, null, values);
+        } catch (Exception e) {
+            System.out.println("Error al registrar usuario" + e.getMessage());
+        } finally {
+            //if (db != null) {
+                // db.close();
+            //}
+        }
+
+        return result != -1;
     }
 
     // Método para verificar las credenciales de login
-    public boolean checkUserCredentials(String correo, String contra) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + nombre_Tabla + " WHERE " + correo_COLUMNA + " = ? AND " + contra_COLUMNA + " = ?";
-        Cursor cursor = db.rawQuery(query, new String[]{correo, contra});
+    public boolean comCredenciales(String nombre, String contra) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        boolean exists = false;
 
-        boolean exists = cursor.getCount() > 0;
-        cursor.close();
-        db.close();
+        try {
+            db = this.getReadableDatabase();
+            String query = "SELECT * FROM " + nombre_Tabla + " WHERE " + nombre_COLUMNA + " = ? AND " + contra_COLUMNA + " = ?";
+            cursor = db.rawQuery(query, new String[]{nombre, contra});
+            exists = cursor.getCount() > 0;
+        } catch (Exception e) {
+            System.out.println("Error al verificar credenciales" + e.getMessage());
+        } finally {
+            //if (cursor != null) {
+                 //cursor.close();
+            //}
+            //if (db != null) {
+                // db.close();
+            //}
+        }
 
         return exists;
     }
+
+    // Método para obtener una lista de usuarios
     public ArrayList<String> obUsuarios() {
         ArrayList<String> users = new ArrayList<>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + nombre_Tabla, null);
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
 
-        if (cursor.moveToFirst()) {
-            do {
-                String user = "ID: " + cursor.getInt(0) + ", Nombre: " + cursor.getString(1) + ", Contacto: " + cursor.getString(2) + ", Correo: " + cursor.getString(3);
-                users.add(user);
-            } while (cursor.moveToNext());
+        try {
+            db = this.getReadableDatabase();
+            cursor = db.rawQuery("SELECT * FROM " + nombre_Tabla, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    String user = "ID: " + cursor.getInt(0) + ", Nombre: " + cursor.getString(1)
+                            + ", Contacto: " + cursor.getString(2) + ", Correo: " + cursor.getString(3);
+                    users.add(user);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            System.out.println("Error al obtener usuarios" + e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
         }
-        cursor.close();
-        db.close();
+
         return users;
     }
+
+    // Método para verificar si el usuario ya existe por correo
+    public boolean usuariosExistente(String correo) {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
+        boolean exists = false;
+
+        try {
+            db = this.getReadableDatabase();
+            cursor = db.rawQuery("SELECT * FROM " + nombre_Tabla + " WHERE " + correo_COLUMNA + " = ?", new String[]{correo});
+            exists = cursor.getCount() > 0;
+        } catch (Exception e) {
+            System.out.println("Error al verificar si el usuario existe" + e.getMessage());
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return exists;
+    }
+
+    // Método para actualizar un usuario
+    public boolean actualizarUsuario(String correo, String nombre, String contacto, String contra, String preferencias, String genero) {
+        SQLiteDatabase db = null;
+        int rows = 0;
+
+        try {
+            db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put(nombre_COLUMNA, nombre);
+            values.put(contacto_COLUMNA, contacto);
+            values.put(contra_COLUMNA, contra);
+            values.put(preferencias_COLUMNA, preferencias);
+            values.put(genero_COLUMNA, genero);
+
+            rows = db.update(nombre_Tabla, values, correo_COLUMNA + " = ?", new String[]{correo});
+        } catch (Exception e) {
+            System.out.println("Error al actualizar usuario" + e.getMessage());
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return rows > 0;
+    }
+
+    // Método para eliminar un usuario
+    public boolean borrarUsuario(String correo) {
+        SQLiteDatabase db = null;
+        int rows = 0;
+
+        try {
+            db = this.getWritableDatabase();
+            rows = db.delete(nombre_Tabla, correo_COLUMNA + " = ?", new String[]{correo});
+        } catch (Exception e) {
+            System.out.println("Error al eliminar usuario" + e.getMessage());
+        } finally {
+            if (db != null) {
+                db.close();
+            }
+        }
+
+        return rows > 0;
+    }
+
 }
 

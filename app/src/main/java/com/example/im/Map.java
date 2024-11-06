@@ -22,7 +22,7 @@ public class Map extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        lbNombre = (TextView) findViewById(R.id.idNombreLb);
+        lbNombre = (TextView) findViewById(R.id.idTextoLb);
         btnBack =(Button) findViewById(R.id.idBack);
 
         btnBack.setOnClickListener(new View.OnClickListener() {

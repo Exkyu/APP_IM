@@ -49,10 +49,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnVerUsuarios.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, VerUsuariosActivity.class);
-            startActivity(intent);
+        btnVerUsuarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, VerUsuariosActivity.class);
+                startActivity(intent);
+            }
+
         });
+
+
 
     }
 

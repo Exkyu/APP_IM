@@ -25,21 +25,21 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         btnIniciar = (Button) findViewById(R.id.idLoginL);
-        txtNombre = (EditText) findViewById(R.id.idNombre);
+        txtNombre = (EditText) findViewById(R.id.idLog);
         btnBack = (Button) findViewById(R.id.idBack);
         btnCrear = (Button) findViewById(R.id.idCrear);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre = ((EditText) findViewById(R.id.idNombre)).getText().toString();
+                String nombre = ((EditText) findViewById(R.id.idLog)).getText().toString();
                 String contra = ((EditText) findViewById(R.id.idContra)).getText().toString();
 
                 BD_IM db = new BD_IM(Login.this);
-                if(db.checkUserCredentials(nombre, contra)) {
+                if(db.comCredenciales(nombre, contra)) {
                     Intent intent = new Intent(Login.this, Map.class);
+                    intent.putExtra("nombre", nombre);
                     startActivity(intent);
-                    conectM();
                 } else {
                     Toast.makeText(Login.this, "Credenciales incorrectas", Toast.LENGTH_SHORT).show();
                 }
@@ -63,14 +63,7 @@ public class Login extends AppCompatActivity {
         });
 
     }
-
-    public void conectM(){
-        Intent intent = new Intent(this,Map.class);
-        String nombreparametro=txtNombre.getText().toString();
-        intent.putExtra("nombre",nombreparametro);
-        startActivity(intent);
-    }
-
+    
     public void crearUser(){
         Intent intent = new Intent(this, Registrar.class);
         startActivity(intent);

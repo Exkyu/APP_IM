@@ -41,23 +41,24 @@
         android:backgroundTint="@color/ColorBtns" />
 
     <Button
-        android:id="@+id/idOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:padding="16dp"
-        android:text="Salir"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/ColorBtns" />
-
-    <Button
         android:id="@+id/idVerUsuarios"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/ColorBtns"
         android:padding="16dp"
         android:text="Ver Usuarios"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="@color/ColorBtns" />
+        android:textColor="#FFFFFF" />
+
+
+    <Button
+        android:id="@+id/idOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/ColorBtns"
+        android:padding="16dp"
+        android:text="Salir"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

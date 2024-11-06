@@ -20,12 +20,12 @@
         android:contentDescription="Logo" />
 
     <EditText
-        android:id="@+id/idNombre"
+        android:id="@+id/idLog"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="#625C5C"
-        android:hint="Ingrese correo"
+        android:hint="Ingrese nombre"
         android:inputType="text"
         android:padding="16dp"
         android:textColor="#333333"
