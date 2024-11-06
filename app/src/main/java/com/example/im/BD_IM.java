@@ -3,7 +3,6 @@ package com.example.im;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -51,6 +50,7 @@ public class BD_IM extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + nombre_Tabla);
         onCreate(db);
     }
+
     // Método para registrar un usuario
     public boolean registerUser(String nombre, String contacto, String correo, String contra, String preferencias, String genero) {
         SQLiteDatabase db = null;
@@ -70,9 +70,9 @@ public class BD_IM extends SQLiteOpenHelper {
         } catch (Exception e) {
             System.out.println("Error al registrar usuario" + e.getMessage());
         } finally {
-            //if (db != null) {
-                // db.close();
-            //}
+            if (db != null) {
+                db.close();
+            }
         }
 
         return result != -1;
@@ -92,12 +92,12 @@ public class BD_IM extends SQLiteOpenHelper {
         } catch (Exception e) {
             System.out.println("Error al verificar credenciales" + e.getMessage());
         } finally {
-            //if (cursor != null) {
-                 //cursor.close();
-            //}
-            //if (db != null) {
-                // db.close();
-            //}
+            if (cursor != null) {
+                cursor.close();
+            }
+            if (db != null) {
+                db.close();
+            }
         }
 
         return exists;
@@ -157,51 +157,5 @@ public class BD_IM extends SQLiteOpenHelper {
 
         return exists;
     }
-
-    // Método para actualizar un usuario
-    public boolean actualizarUsuario(String correo, String nombre, String contacto, String contra, String preferencias, String genero) {
-        SQLiteDatabase db = null;
-        int rows = 0;
-
-        try {
-            db = this.getWritableDatabase();
-            ContentValues values = new ContentValues();
-            values.put(nombre_COLUMNA, nombre);
-            values.put(contacto_COLUMNA, contacto);
-            values.put(contra_COLUMNA, contra);
-            values.put(preferencias_COLUMNA, preferencias);
-            values.put(genero_COLUMNA, genero);
-
-            rows = db.update(nombre_Tabla, values, correo_COLUMNA + " = ?", new String[]{correo});
-        } catch (Exception e) {
-            System.out.println("Error al actualizar usuario" + e.getMessage());
-        } finally {
-            if (db != null) {
-                db.close();
-            }
-        }
-
-        return rows > 0;
-    }
-
-    // Método para eliminar un usuario
-    public boolean borrarUsuario(String correo) {
-        SQLiteDatabase db = null;
-        int rows = 0;
-
-        try {
-            db = this.getWritableDatabase();
-            rows = db.delete(nombre_Tabla, correo_COLUMNA + " = ?", new String[]{correo});
-        } catch (Exception e) {
-            System.out.println("Error al eliminar usuario" + e.getMessage());
-        } finally {
-            if (db != null) {
-                db.close();
-            }
-        }
-
-        return rows > 0;
-    }
-
 }
 
